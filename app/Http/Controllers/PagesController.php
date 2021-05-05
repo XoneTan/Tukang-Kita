@@ -29,4 +29,7 @@ class PagesController extends Controller
         );
         return view('pages.detail')->with($data);
     }
+    public function profile(){
+        return view('pages.profile');
+    }
 }

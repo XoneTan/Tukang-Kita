@@ -17,6 +17,8 @@ Route::get('/category', 'PagesController@category');
 
 Route::get('/category/{id}/{item}', 'PagesController@detail');
 
+Route::get('/profile', 'PagesController@profile');
+
 
 // Route::get('/about/{id}/{user}', function ($id, $user) {
 //     return 'This is user ' .$id. ' with name of '.$user;
