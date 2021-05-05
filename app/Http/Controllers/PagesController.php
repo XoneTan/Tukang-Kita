@@ -12,11 +12,21 @@ class PagesController extends Controller
         return view('pages.index')->with('title',$title);
     }
 
-    public function about(){
+    public function category(){
         $data = array(
-            'title' => 'About Page',
-            'about' => ['Elektronik','Otomotif', 'Landing']
+            'title' => 'Category Page',
+            'category' => ['Elektronik','Otomotif', 'Landing']
         );
-        return view('pages.about')->with($data);
+        return view('pages.category')->with($data);
+    }
+    
+    public function detail($id, $item){
+        $data = array(
+            'title' => 'Detail Page',
+            'about' => ['Elektronik','Otomotif', 'Landing'],
+            'id' => $id,
+            'item' => $item
+        );
+        return view('pages.detail')->with($data);
     }
 }
