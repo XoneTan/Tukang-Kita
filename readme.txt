@@ -1,9 +1,12 @@
-//Use library are in the documentation
+//Use library are in the documentation config-> app.php
 => use Illuminate\Support\Facades\Storage;
 => use Illuminate\Support\Facades\Auth;
-=>
-=>
-=>
+=>Illuminate\View\ViewServiceProvider::class,
+=>Collective\Html\HtmlServiceProvider::class,
+=>Unisharp\Ckeditor\ServiceProvider::class,
+'View' => Illuminate\Support\Facades\View::class,
+'Form' => Collective\Html\FormFacade::class,
+'Html' => Collective\Html\HtmlFacade::class,
 
 //Form
 Command : composer require laravelcollective/html

@@ -62,6 +62,20 @@
                         </div>
 
                         <div class="form-group">
+                            {{Form::label('location','Location',['class'=>'col-md-4 control-label'])}}
+                            <div class="col-md-6">
+                            {{Form::select('location', array('Jakarta' => 'Jakarta', 'Semarang' => 'Semarang', 'Jogjakarta' => 'Jogjakarta'), 'Jakarta',['class'=>'form-control'])}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{Form::label('locationdetail','Location Detail',['class'=>'col-md-4 control-label'])}}
+                            <div class="col-md-6">
+                            {{Form::select('locationdetail', array('Kelapa Gading' => 'Kelapa Gading', 'Serpong' => 'Serpong', 'Medan' => 'Medan'), 'Serpong',['class'=>'form-control'])}}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register
