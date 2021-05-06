@@ -14,7 +14,7 @@ class PagesController extends Controller
 
     public function category(){
         $data = array(
-            'title' => 'Category Page',
+            'title' => 'Category',
             'category' => ['Elektronik','Otomotif', 'Landing']
         );
         return view('pages.category')->with($data);
