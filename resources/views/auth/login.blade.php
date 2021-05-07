@@ -374,9 +374,9 @@
                         <!-- </div> -->
                     </form>
                     <div id="formFooter">
-                        <p><a class="underlineHover" href="/">Home</a></p>
+                        <!-- <p><a class="underlineHover" href="/">Home</a></p> -->
                         <p><a class="underlineHover" href="/register">Registration</a></p>
-                        <p><a class="underlineHover" href="#">Forgot Password?</a></p>
+                        <p><a class="underlineHover" href="{{ route('password.request') }}">Forgot Password?</a></p>
                     </div>
                 <!-- </div> -->
             <!-- </div> -->

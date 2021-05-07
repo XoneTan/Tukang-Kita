@@ -541,9 +541,9 @@
             <input type="submit" class="fadeIn third" value="Register">
         </form>
         <div id="formFooter">
-            <p><a class="underlineHover" href="/">Home</a></p>
+            <!-- <p><a class="underlineHover" href="/">Home</a></p> -->
             <p><a class="underlineHover" href="/login">Login</a></p>
-            <p><a class="underlineHover" href="#">Forgot Password?</a></p>
+            <!-- <p><a class="underlineHover" href="#">Forgot Password?</a></p> -->
         </div>
     </div>
 </div>
