@@ -41,6 +41,7 @@ Command : Unisharp\Ckeditor\ServiceProvider::class,
 => composer require laravel/ui >> ??
 => composer require unisharp/laravel-ckeditor >> ?? >> https://github.com/UniSharp/laravel-ckeditor
 => composer require laravelcollective/html
+=> composer install/update
 
 
 

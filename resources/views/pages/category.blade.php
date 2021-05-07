@@ -77,16 +77,31 @@ div.content {
         <a href="#about">About</a> --}}
         <h4>Category</h4>
         <ul>
-            <li>Montir</li>
-            <li>Washing</li>
-            <li>Detailing</li>
+            {!! Form::checkbox('Mont', 'M') !!}{!! 'Montir' !!}
+            <div></div>
+            {!! Form::checkbox('Mont', 'M') !!}{!! 'Washing' !!}
+            <div></div>
+            {!! Form::checkbox('Mont', 'M') !!}{!! 'idk' !!}
+            <div></div>
 
         </ul>
         <h4>Lokasi</h4>
         <ul>
-            <li>Jakarta</li>
-            <li>Semarang</li>
-            <li>Yogyakarta</li>
+            {!! Form::checkbox('Mont', 'M') !!}{!! 'Jakarta' !!}
+            <div></div>
+            {!! Form::checkbox('Mont', 'M') !!}{!! 'Semarang' !!}
+            <div></div>
+            {!! Form::checkbox('Mont', 'M') !!}{!! 'Yogya' !!}
+            <div></div>
+        </ul>
+        <h4>Rating</h4>
+        <ul>
+            {!! Form::radio('Mont', 'M') !!}{!! 'Bintang 5' !!}
+            <div></div>
+            {!! Form::radio('Mont', 'M') !!}{!! 'diatas Bintang 4' !!}
+            <div></div>
+            {!! Form::radio('Mont', 'M') !!}{!! 'Bintang 3 ke atas' !!}
+            <div></div>
         </ul>
       </div>
       
