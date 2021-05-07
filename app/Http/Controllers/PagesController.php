@@ -32,4 +32,12 @@ class PagesController extends Controller
     public function profile(){
         return view('pages.profile');
     }
+
+    public function login(){
+        return view('pages.login');
+    }
+
+    public function register(){
+        return view('pages.register');
+    }
 }
