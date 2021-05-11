@@ -523,28 +523,28 @@
                 </div>
             </div> -->
             <div class="marg">
-            <select class="fadeIn fourth" aria-label="Default select example">
+            <select class="fadeIn fourth" aria-label="Default select example" name="location">
               <option selected>Location</option>
-              <option value="1">jakarta</option>
-              <option value="2">Semarang</option>
-              <option value="3">Jogjakarta</option>
+              <option value="jakarta">jakarta</option>
+              <option value="Semarang">Semarang</option>
+              <option value="Jogjakarta">Jogjakarta</option>
             </select>
             </div>
             <div class="marg">
-            <select class="fadeIn fourth" aria-label="Default select example">
+            <select class="fadeIn fourth" aria-label="Default select example" name="locationdetail">
               <option selected>Location Detail</option>
-              <option value="1">Kelapa Gading</option>
-              <option value="2">Serpong</option>
-              <option value="3">Medan</option>
+              <option value="Kelapa Gading">Kelapa Gading</option>
+              <option value="Serpong">Serpong</option>
+              <option value="Medan">Medan</option>
             </select>
             </div>
             <input type="submit" class="fadeIn third" value="Register">
         </form>
-        <div id="formFooter">
+        <!-- <div id="formFooter"> -->
             <!-- <p><a class="underlineHover" href="/">Home</a></p> -->
-            <p><a class="underlineHover" href="/login">Login</a></p>
+            <!-- <p><a class="underlineHover" href="/login">Login</a></p> -->
             <!-- <p><a class="underlineHover" href="#">Forgot Password?</a></p> -->
-        </div>
+        <!-- </div> -->
     </div>
 </div>
 @endsection
