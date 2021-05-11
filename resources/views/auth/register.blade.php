@@ -479,7 +479,7 @@
 <div class="wrapper fadeInDown">
     <div id="formContent">
       <div class="fadeIn first">
-        <img src="storage\web_images\tukang logo item.png" id="icon" alt="Logo" />
+        <img src="assets/image/tukang logo item.png" id="icon" alt="Logo" />
       </div>
         <form method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
