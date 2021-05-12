@@ -119,7 +119,6 @@
     }
 </style>
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -205,3 +204,4 @@
 @endif
 <p>This is Detail Page for {{$item}} with id {{$id}}</p>
 @endsection
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
