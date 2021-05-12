@@ -16,12 +16,12 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-        <div class="container">
+        <div class="container" style="min-height: 39.2rem;">
             @include('inc.error')
             @yield('content')
         </div>
         
-        <br><br>
+        
         @include('inc.footer')
 
         
