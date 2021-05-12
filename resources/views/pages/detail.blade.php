@@ -1,9 +1,16 @@
 @extends('layouts.app')
+<style>
+    .marg{
+        margin:"0px 50pc 0px 50px"
+    }
+</style>
 @section('content')
-<!-- <h1>{{$title}}</h1>
-    <h1>Delvin Page</h1> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-<div class="container">
+    <!-- <h1>{{$title}}</h1>
+    <h1>Wirandy Page</h1>
+    <p>The best tukang platform in Indonesia</p> -->
+
+    <div class="container">
     <div class="row">
         <div class="col-md-6">
             <img src="https://via.placeholder.com/400x300/FFB6C1/000000" alt="project-image" class="rounded">

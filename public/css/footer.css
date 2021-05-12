@@ -9,6 +9,13 @@
 ul{
 	list-style: none;
 }
+#footer{
+	display: flex;
+	justify-content: center;
+}
+footer{
+	margin-top: 10rem;
+}
 .footer{
 	background-color: #5ac2b9;
     padding: 15px 0;
@@ -16,6 +23,7 @@ ul{
 .footer-col{
    width: 22%;
    padding: 0 15px;
+   margin-left: 15px;
 }
 .footer-col h4{
 	font-size: 18px;

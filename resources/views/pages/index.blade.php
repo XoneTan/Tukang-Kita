@@ -57,7 +57,7 @@
             <img class="card-image card-img-top loaded" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Card Image" width="253" height="169" data-lazy="true" data-srcset="https://via.placeholder.com/253x169" srcset="https://via.placeholder.com/253x169" data-was-processed="true">
             <div class="card-body">
                 <h2 class="h5">
-                <a href="#">
+                <a href="">
                     Card Body Headline
                 </a>
                 </h2>
