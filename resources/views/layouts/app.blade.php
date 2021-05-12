@@ -20,6 +20,9 @@
             @include('inc.error')
             @yield('content')
         </div>
+        
+        <br><br>
+        @include('inc.footer')
 
         
     </div>
