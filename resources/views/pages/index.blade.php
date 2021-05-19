@@ -64,7 +64,7 @@
     }
 </style>
 @section('content')
-    <!-- <h1>{{$title}}</h1>
+    <!-- <h1></h1>
     <h1>Wirandy Page</h1>
     <p>The best tukang platform in Indonesia</p> -->
 <!-- carousel -->
@@ -80,16 +80,16 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <div class="item active bord">
-      <img class="crs" src="assets/image/aloha carwash.jpg" alt="Los Angeles">
+    <div class="item active">
+      <img src="assets/image/pak jiko.jpg" alt="Los Angeles">
     </div>
 
-    <div class="item bord">
-      <img class="crs" src="assets/image/kingsman workshop.jpg" alt="Chicago">
+    <div class="item">
+      <img src="assets/image/pak jiko.jpg" alt="Chicago">
     </div>
 
-    <div class="item bord">
-      <img class="crs" src="assets/image/yahya detailing.jpg" alt="New York">
+    <div class="item">
+      <img src="assets/image/pak jiko.jpg" alt="New York">
     </div>
   </div>
 
@@ -105,8 +105,36 @@
 <!-- end carousel -->
   <!-- page content -->
 </div>
-    </div>    
-    <div class="col-md-4 col-sm-6">
+    </div>   
+    @if(count($posts) > 0)
+        @foreach ($posts as $item)
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header ">
+                    <h2 class="h6 mb-0">
+                        <a class="text-body text-body" href="#">
+                        {{$item->category}}
+                        </a>
+                    </h2>    
+                 </div>
+                <img class="card-image card-img-top loaded" src="">
+                <img class="card-image card-img-top loaded" src="/storage/cover_images/{{$item->cover_image}}" alt="Card Image" width="253" height="169" data-lazy="true" >
+
+                <div class="card-body">
+                    <h2 class="h5">
+                    <a href="/category/{{$item->id}}">
+                        {{$item->title}}
+                    </a>
+                    </h2>
+                        {{$item->body}}
+                </div>
+            </div>
+        </div>
+
+        @endforeach
+    @endif 
+    
+    {{-- <div class="col-md-4">
         <div class="card">
             <div class="card-header ">
                 <h2 class="h6 mb-0">
@@ -252,4 +280,10 @@
                     Card Body Text   
             </div>
         </div>
+<<<<<<< HEAD
+    </div> --}}
+</div> 
+@endsection
+=======
     </div> -->
+>>>>>>> 72a378d442a216c9a64b63d9a3fab8df427f3b6a

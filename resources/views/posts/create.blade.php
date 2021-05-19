@@ -14,6 +14,30 @@
         <div class="form-group">
             {{Form::file('cover_image')}}
         </div>
+        <div class="marg">
+            <select class="fadeIn fourth" aria-label="Default select example" name="location">
+              <option selected>Location</option>
+              <option value="jakarta">jakarta</option>
+              <option value="Semarang">Semarang</option>
+              <option value="Jogjakarta">Jogjakarta</option>
+            </select>
+            </div>
+            <div class="marg">
+            <select class="fadeIn fourth" aria-label="Default select example" name="locationdetail">
+              <option selected>Location Detail</option>
+              <option value="Kelapa Gading">Kelapa Gading</option>
+              <option value="Serpong">Serpong</option>
+              <option value="Medan">Medan</option>
+            </select>
+            </div>        
+            <div class="marg">
+                <select class="fadeIn fourth" aria-label="Default select example" name="category">
+                  <option selected>Category</option>
+                  <option value="Montir">Montir</option>
+                  <option value="Serpong">Serpong</option>
+                  <option value="Medan">Medan</option>
+                </select>
+                </div>    
         {{Form::submit('Create',['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection

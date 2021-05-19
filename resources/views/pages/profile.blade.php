@@ -105,15 +105,15 @@
                     <h3>Ubah Biodata Diri</h3>
                     <div class="form-group">
                         <label for="email">Email address:</label>
-                        <input type="email" class="form-control" id="email" placeholder="abc@binus.com">
+                        <input type="email" class="form-control" id="email" placeholder="abc@binus.com" value="{{ Auth::user()->email }}">
                     </div>
                     <div class="form-group">
                         <label for="password">Password :</label>
-                        <input type="password" class="form-control" id="password" placeholder="123">
+                        <input type="password" class="form-control" id="password" placeholder="*****" value="{{ Auth::user()->password }}">
                     </div>
                     <div class="form-group">
                         <label for="location">Lokasi :</label>
-                        <input type="text" class="form-control" id="location" placeholder="your location. ex: Bogor, Jakarta, ...">
+                        <input type="text" class="form-control" id="location" placeholder="your location. ex: Bogor, Jakarta, ..." value="{{ Auth::user()->location }}">
                     </div>
                     <button type="button" class="btn submit">
                         SIMPAN

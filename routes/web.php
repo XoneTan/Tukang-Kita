@@ -15,7 +15,7 @@ Route::get('/', 'PagesController@index');
 
 Route::get('/category', 'PagesController@category');
 
-Route::get('/category/{id}/{item}', 'PagesController@detail');
+Route::get('/category/{id}', 'PagesController@detail');
 
 Route::get('/profile', 'PagesController@profile');
 
@@ -23,6 +23,8 @@ Route::get('/profile', 'PagesController@profile');
 //     return 'This is user ' .$id. ' with name of '.$user;
 // });
 Route::resource('posts','PostsController');
+
+Route::resource('pages','ReviewController');
 
 Auth::routes();
 

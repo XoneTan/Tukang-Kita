@@ -31,4 +31,7 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany('App\Post');
     }
+    public function reviews(){
+        return $this->hasMany('App\Review');
+    }
 }

@@ -6,7 +6,7 @@
   width: 200px;
   background-color: #f1f1f1;
   position: absolute;
-  height: 100%;
+  height: 50%;
   overflow: hidden;
 }
 
@@ -135,30 +135,35 @@ div.content {
       
       <!-- Page content -->
 <div class="content">        
-    <div class="col-md-6 col-xl-4">
-    <div class="card">
-        <div class="card mb-3">
-            <div class="card-header ">
-                <h2 class="h6 mb-0">
-                    <a class="text-body text-body" href="#">
-                    </a>
-                </h2>    
-             </div>
-            <img class="img-category" src="assets/image/kingsman workshop.jpg" alt="kingsman workshop">
-            <div class="card-body">
-                <h2 class="h5">
-                <a href="#">
-                    Kingsman Workshop
-                </a>
-                <p><br>Menyediakan jasa reparasi kendaraan anda, dengan prinsip customer adalah raja, serta kepuasan customer adalah prioritas kami.</p>
-                <p>Kelapa Gading, Jakarta Utara</p>
-                <br>
-                </h2>
+    @if(count($posts) > 0)
+        @foreach ($posts as $item)
+        <div class="col-md-6 col-xl-4">
+            <div class="card">
+                <div class="card mb-3">
+                    <div class="card-header ">
+                        <h2 class="h6 mb-0">
+                            <a class="text-body text-body" href="#">
+                            </a>
+                        </h2>    
+                     </div>
+                    <img class="img-category" src="/storage/cover_images/{{$item->cover_image}}" alt="kingsman workshop">
+                    <div class="card-body">
+                        <h2 class="h5">
+                        <a href="/category/{{$item->id}}">
+                            {{$item->title}}
+                        </a>
+                        <p><br>{{$item->body}}</p>
+                        <p>{{$item->location}}, {{$item->locationdetail}}</p>
+                        <br>
+                        </h2>
+                    </div>
+                </div>
             </div>
-        </div>
     </div>
-    </div>
-    <div class="col-md-6 col-xl-4">
+
+        @endforeach
+    @endif
+    {{-- <div class="col-md-6 col-xl-4">
     <div class="card">
         <div class="card mb-3">
             <div class="card-header ">
@@ -272,6 +277,15 @@ div.content {
             </div>
         </div>
     </div>
-    </div>
+    </div> --}}
 </div>
 @endsection
+<script>
+$(document).ready(function () {
+
+
+
+});
+    
+</script>
+
