@@ -280,6 +280,10 @@
                     Card Body Text   
             </div>
         </div>
+<<<<<<< HEAD
     </div> --}}
 </div> 
 @endsection
+=======
+    </div> -->
+>>>>>>> 72a378d442a216c9a64b63d9a3fab8df427f3b6a
