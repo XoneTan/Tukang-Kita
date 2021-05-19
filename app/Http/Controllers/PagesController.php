@@ -37,7 +37,7 @@ class PagesController extends Controller
         //     'id' => $id,
         //     'item' => $item
         // );
-        $review = Review::select('user_id','message','rating')->where('post_id', $id)->get();
+        $review = Review::select('user_id','message','rating')->where('post_id', $id)->take(3)->get();
         $data = Post::find($id);
 
         return view('pages.detail')->with('data', $data)->with('review',$review);

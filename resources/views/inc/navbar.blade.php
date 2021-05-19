@@ -99,7 +99,7 @@
             <!-- <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a> -->
-            <img src="assets/image/tukang logo item.png" class="navbar-brand" alt="Logo" href="{{ url('/') }}" style="padding: 0px"/>
+            <img src="/storage/web_images/tukang logo item.png" class="navbar-brand" alt="Logo" href="{{ url('/') }}" style="padding: 0px"/>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -108,17 +108,19 @@
                 &nbsp;
             </ul>
             <ul class="nav navbar-nav">
-                <li ><a href="/">Home</a></li>
-                <li><a href="/category">Category</a></li>
+                <li ><a href="/" style="color: black;font-weight:bold;">Home</a></li>
+                <li><a href="/category" style="color: black; font-weight:bold;">Category</a></li>
                 {{-- <li><a href="/posts">Show</a></li>
                 <li><a href="/posts/create">Create</a></li> --}}
             </ul>
             <ul class="nav navbar-nav">
                 <li>
-                <div class="form-inline search" style="margin-top: 7px">
-                  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                    aria-describedby="search-addon" />
-                  <button type="button" class="btn btn-outline-primary">search</button>
+                <div class="form-inline search" style="margin-top: 7px; margin-left:30px;">
+                  <input type="search" class="form-control rounded" placeholder="Cari disini..." aria-label="Search"
+                    aria-describedby="search-addon" style="width: 700px;;"/>
+                  <button type="button" class="btn btn-outline-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg></button>
                 </div>
                 </li>
             </ul>
@@ -126,13 +128,13 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ route('login') }}"style="color: black;font-weight:bold; ">Login</a></li>
+                    <li><a href="{{ route('register') }}"style="color: black;font-weight:bold;">Register</a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <button href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" role="button" aria-expanded="false" style="color: black;font-weight:bold; margin-top:7px; padding-left:20px; padding-right:20px;" >
                             {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
+                        </button>
 
                         <ul class="dropdown-menu" role="menu">
                           <li><a href="/profile">Profile</a></li>

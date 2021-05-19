@@ -61,12 +61,12 @@
         border-bottom: none;
     }
 
-    img {
+    /* img {
         width: 100%;
         max-width: 100%;
         height: auto;
         -webkit-backface-visibility: hidden;
-    }
+    } */
     div.stars {
     display: inline-block;
     }
@@ -114,10 +114,7 @@
     color: #ff7e1a;
         
     }
-    .rounded {
-            margin-top: 15px !important;
-            border-radius: 3px !important;
-        }
+
     .mr-5 {
         margin-right: 5px !important;
     }
@@ -199,7 +196,6 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <!--<img src="/assets/image/kingsman workshop.jpg" alt="project-image" class="rounded">-->
             <div class="project-info-box">
                 <div class="col-md-11">
                     <h3>{{$data->title}}</h3>
