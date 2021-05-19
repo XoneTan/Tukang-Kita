@@ -60,7 +60,10 @@ class PostsController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'image|nullable|max:1999' //better 2MB for each database
+            'cover_image' => 'image|nullable|max:1999', //better 2MB for each database
+            'location' => 'required',
+            'locationdetail'=>'required',
+            'category'=>'required'
         ]);
         // return 123;
         //handle file upload
@@ -88,6 +91,9 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         $post->user_id = Auth()->user()->id;
         $post->cover_image = $fileNameToStore;
+        $post->location = $request->location;
+        $post->locationdetail = $request->locationdetail;
+        $post->category = $request->category;
         $post->save();
 
         return redirect('/posts')->with('success','Data Created');

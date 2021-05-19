@@ -67,13 +67,57 @@
         height: auto;
         -webkit-backface-visibility: hidden;
     }
+    div.stars {
+    display: inline-block;
+    }
 
-    .rounded {
-        margin-top: 15px !important;
-        border-radius: 3px !important;
+    input.star { display: none; }
+
+    label.star {
+    float: right;
+    padding: 10px;
+    font-size: 20px;
+    color: 
+    #444;
+    transition: all .2s;
+    }
+
+    input.star:checked ~ label.star:before {
+    content: '⭐️';
+    color: 
+    #e74c3c;
+    transition: all .25s;
+    }
+
+    input.star-5:checked ~ label.star:before {
+    color: #e74c3c;
+    text-shadow: 0 0 5px #7f8c8d;
+    
+    }
+
+    input.star-1:checked ~ label.star:before { 
+        color: #F62; }
+
+    label.star:hover { transform: rotate(-15deg) scale(1.3); content: '⭐️';}
+
+    label.star:before {
+    content: '★';
+    font-family: FontAwesome;
     }
 
 
+    .horline > li:not(:last-child):after {
+        content: " |";
+    }
+    .horline > li {
+    font-weight: bold;
+    color: #ff7e1a;
+        
+    }
+    .rounded {
+            margin-top: 15px !important;
+            border-radius: 3px !important;
+        }
     .mr-5 {
         margin-right: 5px !important;
     }
@@ -133,15 +177,15 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img src="/assets/image/kingsman workshop.jpg" alt="Los Angeles">
+                        <img src="/storage/cover_images/{{$data->cover_image}}" alt="Los Angeles">
                     </div>
 
                     <div class="item">
-                        <img src="/assets/image/aloha carwash.jpg" alt="Chicago">
+                        <img src="/storage/cover_images/{{$data->cover_image}}" alt="Chicago">
                     </div>
 
                     <div class="item">
-                        <img src="/assets/image/pak jiko.jpg" alt="New York">
+                        <img src="/storage/cover_images/{{$data->cover_image}}" alt="New York">
                     </div>
                 </div>
 
@@ -158,32 +202,122 @@
             <!--<img src="/assets/image/kingsman workshop.jpg" alt="project-image" class="rounded">-->
             <div class="project-info-box">
                 <div class="col-md-11">
-                    <h3>{{$item}}</h3>
+                    <h3>{{$data->title}}</h3>
                 </div>
                 <div class="col-md-1">
-                    <button type="button" class="btn btn-outline-danger"><i class="fa fa-heart"></i>
+                    @if (Auth::guest())
+                        
+                    @else
+                    <button type="button" class="btn btn-outline-danger"><i class="fa fa-heart"></i>                     
+                    @endif
                 </div>
 
-                <p class="mb-0">Deskripsi : <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis vulputate purus. Sed semper,
-                    augue id placerat rutrum, quam elit tincidunt magna, et ultrices felis eros ut diam</p>
+                <p class="mb-0">Deskripsi : <br> {{$data->body}} </p>
             </div><!-- / project-info-box -->
         </div><!-- / column -->
 
         <div class="col-md-5">
             <div class="project-info-box mt-0">
                 <h3>Lokasi</h3>
-                <p class="mb-0">Alamat : Lorem ipsum</p>
+                <p class="mb-0">Alamat : {{$data->location}}, {{$data->locationdetail}} </p>
                 <div class="embed-responsive embed-responsive-4by3">
                     <iframe src='https://api.mapbox.com/styles/v1/skyeyaya/ckokk7tvi0tyc18ozce4u6guh.html?fresh=true&title=false&access_token=pk.eyJ1Ijoic2t5ZXlheWEiLCJhIjoiY2tvazBrenc5MGMxaDJybDVybG9nc2xpZSJ9.FdGVvzozDUZs-0YgZwpfJA'></iframe>
                 </div>
                 <p class="mb-0">Kontak : lorem ipsum</p>
             </div><!-- / project-info-box -->
+            <div>
+                <h5 style="display: inline">ULASAN PALING MEMBANTU</h5>
+                <button  class="btn btn-primary" style="display: inline; " data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" >Review</button>
+            </div>
+            <button  class="btn btn-success" style="float:right " data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" >Lihat Semua Review</button>
 
-            <p>ULASAN PALING MEMBANTU</p>
+            @if (Auth::guest())
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Please Login First</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            @else
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                      <h1 class="modal-title" id="exampleModalLabel">Ulasan oleh {{Auth::user()->name}}</h1>
+                      
+                    </div>
+                    <div class="modal-body">
+                        <img src="/storage/cover_images/{{$data->cover_image}}" alt="Los Angeles" style="width:70%;height:30%;">
+                        <h4>Name : {{$data->title}}</h4>
+                        {!! Form::open(['action' => 'ReviewController@store','method' => 'POST', 'enctype'=>'multipart/form-data']) !!}
+                            <input type="hidden" value="{{Auth::user()->id}}" name="userid">
+                            <input type="hidden" value="{{$data->id}}" name="postid">
+                            <div class="form-group required"style="margin-right:50px;">
+                            <div class="col-sm-12" >
+                                <input class="star star-5" value="5" id="star-5" type="radio" name="star" checked/>
+                                <label class="star star-5" for="star-5"></label>
+                                <input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
+                                <label class="star star-3" for="star-3"></label>
+                                <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
+                                <label class="star star-2" for="star-2"></label>
+                                <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
+                                <label class="star star-1" for="star-1"></label>
+                            </div>
+                            </div>
+                            <h2 id="setStar" style="text-align: right;"></h2>
+                            <div class="form-group">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text" name="reviewmsg"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        {{Form::submit('Send Review',['class' => 'btn btn-primary'])}}
+                        {!! Form::close() !!}    
+                        </div>
+                        <div class="modal-footer">
+                                      
+                        </div>
+
+                  </div>
+                </div>
+              </div>
+            @endif
+            @if (count($review) > 0)
+                @foreach ($review as $rev)
+                <div class="project-info-box">
+                    @if ($rev->rating == 5)
+                    <input class="star star-5" value="5" id="star-5" type="radio" name="star" checked/>
+                    <label class="star star-5" for="star-5"></label>
+                    @endif
+                    <input class="star star-5" value="5" id="star-5" type="radio" name="star"/>
+                    <label class="star star-5" for="star-5"></label>
+                    <input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
+                    <label class="star star-4" for="star-4"></label>
+                    <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
+                    <label class="star star-3" for="star-3"></label>
+                    <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
+                    <label class="star star-2" for="star-2"></label>
+                    <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
+                    <label class="star star-1" for="star-1"></label>
+                    <h4>{{$rev->user->name}}</h4>
+                    <p class="mb-0">{{$rev->message}}</p>
+                </div><!-- / project-info-box -->
+                @endforeach
+            @else                 
             <div class="project-info-box">
-                <h4>Budi</h4>
-                <p class="mb-0">Chizuru is the best rental girlfriend</p>
+                <h4>No Review Has been posted yet</h4>
             </div><!-- / project-info-box -->
+            @endif
 
             <div class="col-sm-1 col-sm-offset-9">
                 <a href="#" class="btn btn-danger">Report Iklan</a>
@@ -194,14 +328,30 @@
     </div>
 </div>
 
-@if (count($about) > 0)
-<ul>
-    {{-- @foreach ($about as $item)
-            <li>{{$item}}</li>
-    @endforeach --}}
-</ul>
 
-@endif
-<p>This is Detail Page for {{$item}} with id {{$id}}</p>
 @endsection
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document) .ready(function() {
+    $('#setStar').text("Very Good");
+    $('#star-5').on('click',function(){
+         $('#setStar').text("Very Good");
+    })
+    $('#star-4').on('click',function(){
+         $('#setStar').text("Good Enough");
+    })
+    $('#star-3').on('click',function(){
+         $('#setStar').text("Okay");
+    })
+    $('#star-2').on('click',function(){
+         $('#setStar').text("Bad");
+    })
+    $('#star-1').on('click',function(){
+         $('#setStar').text("Very Bad");
+    })
+});
+</script>
+
+
+
