@@ -103,21 +103,41 @@
             <div class="col-md-8">
                 <div class="content">
                     <h3>Ubah Biodata Diri</h3>
+                    {!! Form::open(['action' => ['PagesController@updateProfile', Auth::user()->id],'method' => 'POST','enctype'=>'multipart/form-data']) !!}
+                    <input type="hidden" value="{{Auth::user()->id}}" name="userid">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="abc" value="{{ Auth::user()->name }}">
+                    </div>
                     <div class="form-group">
                         <label for="email">Email address:</label>
                         <input type="email" class="form-control" id="email" placeholder="abc@binus.com" value="{{ Auth::user()->email }}">
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password :</label>
-                        <input type="password" class="form-control" id="password" placeholder="*****" value="{{ Auth::user()->password }}">
+                    <div class="form-group" id="curpass">
+                        <label for="password">Current Password :</label>
+                        <input type="password" class="form-control" name="pass" id="password" placeholder="Insert Current Password" value="">
+                    </div>
+                    <div class="form-group" id="newpass">
+                        <label for="newpassword">New Password :</label>
+                        <input type="password" class="form-control" name="newpass" id="newpassword" placeholder="Insert New Password" value="">
+                    </div>
+                    <div class="form-group" id="conpass">
+                        <label for="conpassword">Confirm New Password :</label>
+                        <input type="password" class="form-control" name="conpass" id="conpassword" placeholder="Reinsert your New Password" value="">
                     </div>
                     <div class="form-group">
                         <label for="location">Lokasi :</label>
-                        <input type="text" class="form-control" id="location" placeholder="your location. ex: Bogor, Jakarta, ..." value="{{ Auth::user()->location }}">
+                        <input type="text" name="location" class="form-control" id="location" placeholder="your location. ex: Bogor, Jakarta, ..." value="{{ Auth::user()->location }}">
                     </div>
-                    <button type="button" class="btn submit">
-                        SIMPAN
+                    <div class="form-group">
+                        <label for="location">Detil Lokasi :</label>
+                        <input type="text" name="location" class="form-control" id="detaillocation" placeholder="your location. ex: Bogor, Jakarta, ..." value="{{ Auth::user()->locationdetail }}">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="changepas">
+                        Change Password
                     </button>
+                    {{Form::submit('SIMPAN',['class' => 'btn submit'])}}
+                    {!! Form::close() !!}                    
                 </div>
             </div>
         </div>
@@ -125,3 +145,17 @@
 </div>
 
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document) .ready(function() {
+    $('#curpass').hide();
+    $('#newpass').hide();
+    $('#conpass').hide();
+    $('#changepas').on('click',function(){
+        $('#curpass').show();
+        $('#newpass').show();
+        $('#conpass').show();
+        
+    })
+});
+</script>

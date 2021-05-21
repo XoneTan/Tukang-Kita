@@ -19,12 +19,16 @@ Route::get('/category/{id}', 'PagesController@detail');
 
 Route::get('/profile', 'PagesController@profile');
 
+Route::get('/profile/{id}', 'PagesController@updateProfile');
+
+
 // Route::get('/about/{id}/{user}', function ($id, $user) {
 //     return 'This is user ' .$id. ' with name of '.$user;
 // });
 Route::resource('posts','PostsController');
 
 Route::resource('pages','ReviewController');
+
 
 Auth::routes();
 

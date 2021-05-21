@@ -178,11 +178,11 @@
                     </div>
 
                     <div class="item">
-                        <img src="/storage/cover_images/{{$data->cover_image}}" alt="Chicago">
+                        <img src="/storage/cover_images/{{$data->cover_1}}" alt="Chicago">
                     </div>
 
                     <div class="item">
-                        <img src="/storage/cover_images/{{$data->cover_image}}" alt="New York">
+                        <img src="/storage/cover_images/{{$data->cover_2}}" alt="New York">
                     </div>
                 </div>
 
@@ -204,7 +204,7 @@
                     @if (Auth::guest())
                         
                     @else
-                    <button type="button" class="btn btn-outline-danger"><i class="fa fa-heart"></i>                     
+                    <button type="button" class="btn btn-outline-danger"data-toggle="tooltip" data-placement="top" title="Add to Favourites"><i class="fa fa-heart"></i>                     
                     @endif
                 </div>
 
@@ -219,13 +219,14 @@
                 <div class="embed-responsive embed-responsive-4by3">
                     <iframe src='https://api.mapbox.com/styles/v1/skyeyaya/ckokk7tvi0tyc18ozce4u6guh.html?fresh=true&title=false&access_token=pk.eyJ1Ijoic2t5ZXlheWEiLCJhIjoiY2tvazBrenc5MGMxaDJybDVybG9nc2xpZSJ9.FdGVvzozDUZs-0YgZwpfJA'></iframe>
                 </div>
-                <p class="mb-0">Kontak : lorem ipsum</p>
+                <p class="mb-0">Kontak : {{$data->contact_name}}</p>
+                <p class="mb-0">Phone : {{$data->contact_phone}}</p>
             </div><!-- / project-info-box -->
             <div>
                 <h5 style="display: inline">ULASAN PALING MEMBANTU</h5>
                 <button  class="btn btn-primary" style="display: inline; " data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" >Review</button>
             </div>
-            <button  class="btn btn-success" style="float:right " data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" >Lihat Semua Review</button>
+            <button  class="btn btn-success" style="float:right " data-toggle="modal" data-target="#allModal" data-whatever="@getbootstrap" >Lihat Semua Review</button>
 
             @if (Auth::guest())
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -288,26 +289,163 @@
                 </div>
               </div>
             @endif
+            <div class="modal fade" id="allModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                      <h1 class="modal-title" id="exampleModalLabel">Semua Ulasan</h1>
+                      
+                    </div>
+                    <div class="modal-body">
+                    @foreach ($review as $rev)
+                
+                    <div class="project-info-box">
+                        <h2>{{$rev->rating}}</h2>
+                        @if ($rev->rating == 5)
+                        <input class="star star-5" value="5" id="star-5" type="radio" name="star" checked/>
+                        <label class="star star-5" for="star-5"></label>
+                        <input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
+                        <label class="star star-1" for="star-1"></label>
+                        @endif
+                        @if ($rev->rating == 4)
+                        <input class="star star-5" value="5" id="star-5" type="radio" name="star"/>
+                        <label class="star star-5" for="star-5"></label>
+                        <input class="star star-4" value="4" id="star-4" type="radio" name="star" checked/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
+                        <label class="star star-1" for="star-1"></label>
+                        @endif
+                        @if ($rev->rating == 3)
+                        <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
+                        <label class="star star-5" for="star-5"></label>
+                        <input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" value="3" id="star-3" type="radio" name="star" checked/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
+                        <label class="star star-1" for="star-1"></label>
+                        @endif
+                        @if ($rev->rating == 2)
+                        <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
+                        <label class="star star-5" for="star-5"></label>
+                        <input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" value="2" id="star-2" type="radio" name="star" checked/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
+                        <label class="star star-1" for="star-1"></label>
+                        @endif
+                        @if ($rev->rating == 1)
+                        <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
+                        <label class="star star-5" for="star-5"></label>
+                        <input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" value="1" id="star-1" type="radio" name="star" checked/>
+                        <label class="star star-1" for="star-1"></label>
+                        @endif
+                        <h4>{{$rev->user->name}}</h4>
+                        <p class="mb-0">{{$rev->message}}</p>
+                    </div><!-- / project-info-box -->
+                @endforeach
+                        </div>
+                        <div class="modal-footer">
+                                      
+                        </div>
+
+                  </div>
+                </div>
+              </div>
+            <?php $i = 0 ?>
             @if (count($review) > 0)
                 @foreach ($review as $rev)
+                <?php 
+                if ($i == 3) {
+                    # code...
+                    break;
+                }
+                ?>
                 <div class="project-info-box">
                     @if ($rev->rating == 5)
-                    <input class="star star-5" value="5" id="star-5" type="radio" name="star" checked/>
-                    <label class="star star-5" for="star-5"></label>
-                    @endif
-                    <input class="star star-5" value="5" id="star-5" type="radio" name="star"/>
-                    <label class="star star-5" for="star-5"></label>
-                    <input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
-                    <label class="star star-4" for="star-4"></label>
-                    <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
-                    <label class="star star-3" for="star-3"></label>
-                    <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
-                    <label class="star star-2" for="star-2"></label>
-                    <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
-                    <label class="star star-1" for="star-1"></label>
+                        <input class="star star-5" value="5" id="star-5" type="radio" name="star" checked/>
+                        <label class="star star-5" for="star-5"></label><input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
+                        <label class="star star-1" for="star-1"></label>
+                        @endif
+                        @if ($rev->rating == 4)
+                        <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
+                        <label class="star star-5" for="star-5"></label><input class="star star-4" value="4" id="star-4" type="radio" name="star" checked/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
+                        <label class="star star-1" for="star-1"></label>
+                        @endif
+                        @if ($rev->rating == 3)
+                        <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
+                        <label class="star star-5" for="star-5"></label>
+                        <input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" value="3" id="star-3" type="radio" name="star"checked/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
+                        <label class="star star-1" for="star-1"></label>
+                        @endif
+                        @if ($rev->rating == 2)
+                        <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
+                        <label class="star star-5" for="star-5"></label><input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" value="2" id="star-2" type="radio" name="star" checked/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" value="1" id="star-1" type="radio" name="star"/>
+                        <label class="star star-1" for="star-1"></label>
+                        @endif
+                        @if ($rev->rating == 1)
+                        <input class="star star-5" value="5" id="star-5" type="radio" name="star" />
+                        <label class="star star-5" for="star-5"></label><input class="star star-4" value="4" id="star-4" type="radio" name="star"/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" value="3" id="star-3" type="radio" name="star"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" value="2" id="star-2" type="radio" name="star"/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" value="1" id="star-1" type="radio" name="star" checked/>
+                        <label class="star star-1" for="star-1"></label>
+                        @endif
                     <h4>{{$rev->user->name}}</h4>
                     <p class="mb-0">{{$rev->message}}</p>
                 </div><!-- / project-info-box -->
+            <?php $i++ ?>
                 @endforeach
             @else                 
             <div class="project-info-box">
@@ -316,11 +454,50 @@
             @endif
 
             <div class="col-sm-1 col-sm-offset-9">
-                <a href="#" class="btn btn-danger">Report Iklan</a>
-            </div><!-- Button -->
-        </div><!-- / column -->
-
-
+                <a href=""  data-toggle="modal" data-target="#reportModal" class="btn btn-danger">Report Iklan</a>
+            </div>
+        </div>
+        <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLabel">Laporkan Iklan</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Apa yang salah dengan iklan ini?</h5>
+                    <input class="iklan" type="radio" />
+                    <label for="iklan">Tak Pantas</label>
+                    <br/>
+                    <input class="iklan" type="radio" />
+                    <label for="iklan">Tidak Relevan</label>
+                    <br/>
+                    <input class="iklan" type="radio" />
+                    <label for="iklan">Berulang</label>
+                    <br/>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    {{Form::submit('Submit',['class' => 'btn btn-primary', 'data-toggle'=>"modal", 'data-target'=>"#thankyouModal",'data-dismiss'=>"modal"])}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="thankyouModal" tabindex="-1" role="dialog" aria-labelledby="reportModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLabel">Terimakasih atas Laporannya</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Kami akan mencoba untuk tidak menampilkannya lagi</h5>
+                     </div>
+              </div>
+            </div>
+          </div>
     </div>
 </div>
 
@@ -329,7 +506,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document) .ready(function() {
+$(document) .ready(function() {
     $('#setStar').text("Very Good");
     $('#star-5').on('click',function(){
          $('#setStar').text("Very Good");

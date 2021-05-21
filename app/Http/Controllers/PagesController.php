@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Review;
+use App\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -37,7 +38,7 @@ class PagesController extends Controller
         //     'id' => $id,
         //     'item' => $item
         // );
-        $review = Review::select('user_id','message','rating')->where('post_id', $id)->take(3)->get();
+        $review = Review::select('user_id','message','rating')->where('post_id', $id)->get();
         $data = Post::find($id);
 
         return view('pages.detail')->with('data', $data)->with('review',$review);
@@ -46,4 +47,26 @@ class PagesController extends Controller
         return view('pages.profile');
     }
 
-}
+    public function updateProfile(Request $request, $id){
+        $user = User::find($id);
+        if($request->pass == ""){
+
+        }else{
+            if(bcrypt($request->input('pass')) == $user->password){
+                $user->password = $request->input('newpass');
+            }else{
+                return redirect('/profile')->with('error','Password tidak sesuai!');
+            }
+        }
+        
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->location = $request->input('location');
+        $user->locationdetail = $request->input('detaillocation');
+        
+        $user->save();
+        //how to delete file after update to reserve memory, LOOK DESTROY METHOD
+        return redirect('/profile')->with('success','Data Updated!!');
+    }
+
+}   

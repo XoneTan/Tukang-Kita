@@ -12,19 +12,37 @@
             {{Form::textarea('body','',['id' => 'article-ckeditor','class' => 'form-control','placeholder' =>'Body Content'])}}
         </div>
         <div class="form-group">
-            {{Form::file('cover_image')}}
+          {{Form::label('contact_name','Contact Name')}}
+          {{Form::text('contact_name','',['class' => 'form-control','placeholder' =>'Contact Name'])}}
+      </div>
+      <div class="form-group">
+        {{Form::label('contact_phone','Phone')}}
+        {{Form::text('contact_phone','',['class' => 'form-control','placeholder' =>'08xxxxxxxxxx'])}}
+    </div>
+        <div class="form-group">
+        {{Form::label('cover_image','Cover')}}
+        {{Form::file('cover_image')}}
         </div>
+        <div class="form-group">
+          {{Form::label('cover_1','Cover 1')}}
+          {{Form::file('cover_1')}}
+        </div>
+        <div class="form-group">
+          {{Form::label('cover_2','Cover 2')}}
+          {{Form::file('cover_2')}}
+        </div>
+
         <div class="marg">
             <select class="fadeIn fourth" aria-label="Default select example" name="location">
-              <option selected>Location</option>
-              <option value="jakarta">jakarta</option>
+              <option selected value="">Location</option>
+              <option value="Jakarta">Jakarta</option>
               <option value="Semarang">Semarang</option>
               <option value="Jogjakarta">Jogjakarta</option>
             </select>
             </div>
             <div class="marg">
             <select class="fadeIn fourth" aria-label="Default select example" name="locationdetail">
-              <option selected>Location Detail</option>
+              <option selected value="">Location Detail</option>
               <option value="Kelapa Gading">Kelapa Gading</option>
               <option value="Serpong">Serpong</option>
               <option value="Medan">Medan</option>
@@ -32,12 +50,12 @@
             </div>        
             <div class="marg">
                 <select class="fadeIn fourth" aria-label="Default select example" name="category">
-                  <option selected>Category</option>
+                  <option selected value="">Category</option>
                   <option value="Montir">Montir</option>
-                  <option value="Serpong">Serpong</option>
-                  <option value="Medan">Medan</option>
+                  <option value="Washing">Washing</option>
+                  <option value="Detailing">Detailing</option>
                 </select>
-                </div>    
+              </div>    
         {{Form::submit('Create',['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection

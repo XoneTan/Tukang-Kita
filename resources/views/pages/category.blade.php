@@ -105,39 +105,37 @@ div.content {
         <a href="#about">About</a> --}}
         <h4>Category</h4>
         <ul>
-            {!! Form::checkbox('Mont', 'M') !!}{!! 'Montir' !!}
+            <input type="checkbox" name="category" id="montir" value="Montir" checked>
+            <label for="categ">Montir</label>
             <div></div>
-            {!! Form::checkbox('Mont', 'M') !!}{!! 'Washing' !!}
+            <input type="checkbox" name="category" id="washing" value="Washing" checked>
+            <label for="categ">Washing</label>
             <div></div>
-            {!! Form::checkbox('Mont', 'M') !!}{!! 'Detailing' !!}
+            <input type="checkbox" name="category" id="detailing" value="Detailing" checked>
+            <label for="categ">Detailing</label>
             <div></div>
 
         </ul>
         <h4>Lokasi</h4>
         <ul>
-            {!! Form::checkbox('Mont', 'M') !!}{!! 'Jakarta' !!}
+            <input type="checkbox" name="location" id="categ" value="Jakarta" checked>
+            <label for="categ">Jakarta</label>
             <div></div>
-            {!! Form::checkbox('Mont', 'M') !!}{!! 'Semarang' !!}
+            <input type="checkbox" name="category" id="categ" value="Semarang" checked>
+            <label for="categ">Semarang</label>
             <div></div>
-            {!! Form::checkbox('Mont', 'M') !!}{!! 'Yogya' !!}
-            <div></div>
-        </ul>
-        <h4>Rating</h4>
-        <ul>
-            {!! Form::radio('Mont', 'M') !!}{!! 'Bintang 5' !!}
-            <div></div>
-            {!! Form::radio('Mont', 'M') !!}{!! 'diatas Bintang 4' !!}
-            <div></div>
-            {!! Form::radio('Mont', 'M') !!}{!! 'Bintang 3 ke atas' !!}
+            <input type="checkbox" name="category" id="categ" value="Yogyakarta" checked>
+            <label for="categ">Yogyakarta</label>
             <div></div>
         </ul>
+        
       </div>
       
       <!-- Page content -->
 <div class="content">        
     @if(count($posts) > 0)
         @foreach ($posts as $item)
-        <div class="col-md-6 col-xl-4">
+        <div class="col-md-6 col-xl-4 {{$item->category}} {{$item->location}}">
             <div class="card">
                 <div class="card mb-3">
                     <div class="card-header ">
@@ -152,6 +150,7 @@ div.content {
                         <a href="/category/{{$item->id}}">
                             {{$item->title}}
                         </a>
+                        <p id="testing"></p>
                         <p><br>{{$item->body}}</p>
                         <p>{{$item->location}}, {{$item->locationdetail}}</p>
                         <br>
@@ -163,127 +162,41 @@ div.content {
 
         @endforeach
     @endif
-    {{-- <div class="col-md-6 col-xl-4">
-    <div class="card">
-        <div class="card mb-3">
-            <div class="card-header ">
-                <h2 class="h6 mb-0">
-                    <a class="text-body text-body" href="#">
-                    </a>
-                </h2>    
-             </div>
-            <img class="img-category" src="assets/image/pak jiko.jpg" alt="Pak Jiko Workshop">
-            <div class="card-body">
-                <h2 class="h5">
-                <a href="#">
-                Pak Jiko Workshop
-                </a>
-                <p><br>Menyediakan jasa reparasi kendaraan anda, dengan pengalaman 10 tahun, menjamin kendaraan anda dalam kondisi terbaik.</p>
-                <p>Kelapa Gading, Jakarta Utara</p>
-                <br>
-                </h2>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-6 col-xl-4">
-    <div class="card">
-        <div class="card mb-3">
-            <div class="card-header ">
-                <h2 class="h6 mb-0">
-                    <a class="text-body text-body" href="#">
-                    </a>
-                </h2>    
-             </div>
-             <img class="img-category" src="assets/image/cling car wash.jpg" alt="Cling Car Wash">
-            <div class="card-body">
-                <h2 class="h5">
-                <a href="#">
-                Cling Car Wash
-                </a>
-                <p><br>Menyediakan jasa mencuci kendaraan dengan pressure washing yang dijamin membuat kendaraan anda cling-cling.</p>
-                <p>Kelapa Gading, Jakarta Utara</p>
-                <br>
-                </h2> 
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-6 col-xl-4">
-    <div class="card">
-        <div class="card mb-3">
-            <div class="card-header ">
-                <h2 class="h6 mb-0">
-                    <a class="text-body text-body" href="#">
-                    </a>
-                </h2>    
-             </div>
-             <img class="img-category" src="assets/image/aloha carwash.jpg" alt="Aloha Car Wash">
-            <div class="card-body">
-                <h2 class="h5">
-                <a href="#">
-                Aloha Car Wash
-                </a>
-                <p><br>menyediakan jasa mencuci kendaraan anda, yang sudah menjadi kepercayaan orang indonesia selama 15 tahun.</p>
-                <p>Kelapa Gading, Jakarta Utara</p>
-                <br>
-                </h2>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-6 col-xl-4">
-    <div class="card">
-        <div class="card mb-3">
-            <div class="card-header ">
-                <h2 class="h6 mb-0">
-                    <a class="text-body text-body" href="#">
-                    </a>
-                </h2>    
-             </div>
-             <img class="img-category" src="assets/image/yahya detailing.jpg" alt="Yahya Detailing">
-            <div class="card-body">
-                <h2 class="h5">
-                <a href="#">
-                Yahya Detailing
-                </a>
-                <p><br>Siap Merawat Kendaraan Anda. Kami spesialis nano ceramic coating yang sudah berpengalaman Membersihkan & mengatasi mesin kotor, kabin bau, jok kumal, dashboard kusam.</p>
-                <p>Kelapa Gading, Jakarta Utara</p>
-                <br>
-                </h2>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="col-md-6 col-xl-4">
-    <div class="card">
-        <div class="card mb-3">
-            <div class="card-header ">
-                <h2 class="h6 mb-0">
-                    <a class="text-body text-body" href="#">
-                    </a>
-                </h2>    
-             </div>
-             <img class="img-category" src="assets/image/rizki workshop.jpg" alt="Rizki Worshop">
-            <div class="card-body">
-                <h2 class="h5">
-                <a href="#">
-                Rizki Workshop
-                </a>
-                <p><br>Dengan pengalaman yang sudah bertahan selama 25 tahun, kami siap memberikan pelayanan yang lebih lengkap dan menyeluruh dengan berbagai keunggulan baru bagi setiap pelanggan.</p>
-                <p>Kelapa Gading, Jakarta Utara</p>
-                <br>
-                </h2>
-            </div>
-        </div>
-    </div>
-    </div> --}}
+
 </div>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function () {
 
+    $("input[type='checkbox']").on('click', function () {
+            if ($(this).prop('checked') == true) {
+                var value = $(this).val();
+                $('div.'+value).show();
 
+                // $.ajax({
+                //     type: "POST",
+                //     url: "/Home/setUsect",
+                //     data: {
+                //         ProjectID: ProjectID,
+                //         UserID: value
+                //     }
+                    
+                // })
+            } else if ($(this).prop('checked') == false) {
+                var val = $(this).val();
+                $('div.'+val).hide();
+
+                // $.ajax({
+                //     type: "POST",
+                //     url: "/Home/delUsect",
+                //     data: {
+                //         ProjectID: ProjectID,
+                //         UserID: val
+                //     }
+                // })
+            }
+        });
 
 });
     

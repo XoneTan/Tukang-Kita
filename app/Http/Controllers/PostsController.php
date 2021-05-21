@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -63,7 +64,11 @@ class PostsController extends Controller
             'cover_image' => 'image|nullable|max:1999', //better 2MB for each database
             'location' => 'required',
             'locationdetail'=>'required',
-            'category'=>'required'
+            'category'=>'required',
+            'contact_name' => 'required',
+            'contact_phone' => 'required|regex:/(08)[0-9]{10}/',
+            'cover_1' => 'image|nullable|max:1999',
+            'cover_2' => 'image|nullable|max:1999'
         ]);
         // return 123;
         //handle file upload
@@ -85,15 +90,55 @@ class PostsController extends Controller
         }else{
             $fileNameToStore = 'noimage.jpg';//jika tidak mengisi bagian foto
         }
+        if($request->hasFile('cover_1')){//make sure user choose upload file
+            //get file name
+            $extName = $request->file('cover_1')->getClientOriginalName();//get file
+            //get just file name
+            $fileName = pathinfo($extName, PATHINFO_FILENAME);
+
+            //get just ext
+            $ext = $request->file('cover_1')->getClientOriginalExtension();
+            //file name to store
+            $fileNameToStore1 = $fileName.'_'.time().'.'.$ext;
+
+            //upload image and create a folder with path Storage->App->public and inaccessible through web
+            $path = $request->file('cover_1')->storeAs('public/cover_images', $fileNameToStore1);
+            
+
+        }else{
+            $fileNameToStore1 = 'noimage.jpg';//jika tidak mengisi bagian foto
+        }
+        if($request->hasFile('cover_2')){//make sure user choose upload file
+            //get file name
+            $extName = $request->file('cover_2')->getClientOriginalName();//get file
+            //get just file name
+            $fileName = pathinfo($extName, PATHINFO_FILENAME);
+
+            //get just ext
+            $ext = $request->file('cover_2')->getClientOriginalExtension();
+            //file name to store
+            $fileNameToStore2 = $fileName.'_'.time().'.'.$ext;
+
+            //upload image and create a folder with path Storage->App->public and inaccessible through web
+            $path = $request->file('cover_2')->storeAs('public/cover_images', $fileNameToStore2);
+            
+
+        }else{
+            $fileNameToStore2 = 'noimage.jpg';//jika tidak mengisi bagian foto
+        }
 
         $post = new Post();
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->user_id = Auth()->user()->id;
         $post->cover_image = $fileNameToStore;
+        $post->cover_1 = $fileNameToStore1;
+        $post->cover_2 = $fileNameToStore2;
         $post->location = $request->location;
         $post->locationdetail = $request->locationdetail;
         $post->category = $request->category;
+        $post->contact_name = $request->contact_name;
+        $post->contact_phone = $request->contact_phone;
         $post->save();
 
         return redirect('/posts')->with('success','Data Created');
@@ -193,4 +238,25 @@ class PostsController extends Controller
         }
         return redirect('/posts')->with('success','Data Removed');
     }
+    // public function updateProfile(Request $request){
+    //     $user = User::find($request->input('userid'));
+    //     if($request->pass == ""){
+
+    //     }else{
+    //         if(bcrypt($request->input('pass')) == $user->password){
+    //             $user->password = $request->input('newpass');
+    //         }else{
+    //             return redirect('/profile')->with('error','Password tidak sesuai!');
+    //         }
+    //     }
+        
+    //     $user->name = $request->input('name');
+    //     $user->email = $request->input('email');
+    //     $user->location = $request->input('location');
+    //     $user->locationdetail = $request->input('detaillocation');
+        
+    //     $user->save();
+    //     //how to delete file after update to reserve memory, LOOK DESTROY METHOD
+    //     return redirect('/profile')->with('success','Data Updated!!');
+    // }
 }
