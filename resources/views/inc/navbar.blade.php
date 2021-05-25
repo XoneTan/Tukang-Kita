@@ -135,7 +135,7 @@
                         <button href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" role="button" aria-expanded="false" style="color: black;font-weight:bold; margin-top:7px;display:inline; padding-left:20px; padding-right:20px;" >
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </button>
-                        <a href="" style="display: inline; font-size:20px;margin-top:8px;"data-toggle="tooltip" data-placement="top" title="Favourites">⭐️</a>
+                        <a href="/favorite" style="display: inline; font-size:20px;margin-top:1px;"data-toggle="tooltip" data-placement="top" title="Favourites">⭐️</a>
                         <ul class="dropdown-menu" role="menu">
                           <li><a href="/profile">Profile</a></li>
                             <li>
