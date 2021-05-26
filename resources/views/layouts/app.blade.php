@@ -33,7 +33,36 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
         <script>
-            CKEDITOR.replace( 'article-ckeditor' );
+            $(document).ready(function () {
+
+                $('#btnSub').on('click', function () {
+                    var srch = $('#searchPost').val();
+                    $('.categories').hide();
+                    $("input[type='checkbox']").prop('checked', false);
+                    $('.'+srch).show();
+                            // $.ajax({
+                            //     type: "POST",
+                            //     url: "/Home/setUsect",
+                            //     data: {
+                            //         ProjectID: ProjectID,
+                            //         UserID: value
+                            //     }
+                                
+                            // })
+                        
+
+                            // $.ajax({
+                            //     type: "POST",
+                            //     url: "/Home/delUsect",
+                            //     data: {
+                            //         ProjectID: ProjectID,
+                            //         UserID: val
+                            //     }
+                            // })
+                        }
+                    );
+
+                });
         </script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         

@@ -135,7 +135,7 @@ div.content {
 <div class="content">        
     @if(count($posts) > 0)
         @foreach ($posts as $item)
-        <div class="col-md-6 col-xl-4 {{$item->category}} {{$item->location}}">
+        <div class="col-md-6 col-xl-4 categories {{$item->category}} {{$item->location}} {{$item->title}}">
             <div class="card">
                 <div class="card mb-3">
                     <div class="card-header ">
@@ -150,7 +150,6 @@ div.content {
                         <a href="/category/{{$item->id}}">
                             {{$item->title}}
                         </a>
-                        <p id="testing"></p>
                         <p><br>{{$item->body}}</p>
                         <p>{{$item->location}}, {{$item->locationdetail}}</p>
                         <br>
