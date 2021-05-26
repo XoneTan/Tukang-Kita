@@ -43,6 +43,14 @@ class PagesController extends Controller
 
         return view('pages.detail')->with('data', $data)->with('review',$review);
     }
+
+    public function favorite(){
+        $a = Post::all();
+        // return view('pages.index',compact('title'));
+        // return view('pages.index')->with('posts',$a);
+        return view('pages.favorite')->with('posts',$a);
+    }
+
     public function profile(){
         return view('pages.profile');
     }
