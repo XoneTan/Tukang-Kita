@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Review;
 use App\User;
+use App\Favourites;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -44,8 +45,8 @@ class PagesController extends Controller
         return view('pages.detail')->with('data', $data)->with('review',$review);
     }
 
-    public function favorite(){
-        $a = Post::all();
+    public function favorite($id){
+        $a = Favourites::find($id);
         // return view('pages.index',compact('title'));
         // return view('pages.index')->with('posts',$a);
         return view('pages.favorite')->with('posts',$a);

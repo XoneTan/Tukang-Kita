@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Favourites;
 use Illuminate\Http\Request;
+use App\User;
 
 class FavouriteController extends Controller
 {
@@ -11,9 +13,18 @@ class FavouriteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         //
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+
+        return view('pages.favorite')->with('fav', $user->favourites);
     }
 
     /**
@@ -35,6 +46,12 @@ class FavouriteController extends Controller
     public function store(Request $request)
     {
         //
+        $fav = new Favourites();
+        $fav->post_id = $request->post_id;
+        $fav->user_id = $request->user_id;
+        $fav->save();
+
+        return redirect('/favorite')->with('success','Added to Favourite!!');
     }
 
     /**

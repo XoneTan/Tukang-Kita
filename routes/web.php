@@ -21,7 +21,9 @@ Route::get('/profile', 'PagesController@profile');
 
 Route::get('/profile/{id}', 'PagesController@updateProfile');
 
-route::get('/favorite','PagesController@favorite');
+route::get('/favorite/{id}','PagesController@favorite');
+
+route::post('/favorite/store','FavouriteController@store');
 
 // Route::get('/about/{id}/{user}', function ($id, $user) {
 //     return 'This is user ' .$id. ' with name of '.$user;

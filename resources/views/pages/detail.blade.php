@@ -204,7 +204,7 @@
                     @if (Auth::guest())
                         
                     @else
-                    <button type="button" class="btn btn-outline-danger"data-toggle="tooltip" data-placement="top" title="Add to Favourites"><i class="fa fa-heart"></i>                     
+                    <button type="button" class="btn btn-outline-danger"data-toggle="tooltip" data-placement="top" title="Add to Favourites" id="addFav" onclick="addcao({{Auth::user()->id}}, {{$data->id}})"><i class="fa fa-heart"></i>                     
                     @endif
                 </div>
 
@@ -504,7 +504,8 @@
 
 @endsection
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 <script>
 $(document) .ready(function() {
     $('#setStar').text("Very Good");
@@ -523,7 +524,23 @@ $(document) .ready(function() {
     $('#star-1').on('click',function(){
          $('#setStar').text("Very Bad");
     })
+
+    
 });
+function addcao(userid, postid){
+    $.ajax({
+               type:'POST',
+               url:'/favorite/store',
+               data:{
+                post_id: postid,
+                user_id: userid
+               },
+               success:function(data) {
+                   console.log(data);
+               }
+        });
+    
+}
 </script>
 
 

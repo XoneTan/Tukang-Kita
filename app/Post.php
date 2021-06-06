@@ -20,4 +20,7 @@ class Post extends Model
     public function posts(){
         return $this->hasMany('App\Review');
     }
+    public function favourites(){
+        return $this->hasMany('App\Favourites');
+    }
 }
