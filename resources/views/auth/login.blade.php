@@ -1,49 +1,49 @@
 @extends('layouts.app')
 <style>
- /* BASIC */
+  /* BASIC */
 
- html {
+  html {
     background-color: $teal-500;
   }
-  
- body {
+
+  body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
   }
-  
+
   a {
     text-decoration: none;
     color: #92badd;
-    display:inline-block;
+    display: inline-block;
     text-decoration: none;
     font-weight: 400;
   }
-  
+
   h2 {
     text-decoration: none;
     text-align: center;
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
-    display:inline-block;
-    margin: 40px 8px 10px 8px; 
+    display: inline-block;
+    margin: 40px 8px 10px 8px;
     color: #cccccc;
   }
-  
-  
-  
+
+
+
   /* STRUCTURE */
-  
+
   .wrapper {
     display: flex;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     min-height: 100%;
     padding: 20px;
   }
-  
+
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
@@ -53,11 +53,11 @@
     max-width: 450px;
     position: relative;
     padding: 0px;
-    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
     text-align: center;
   }
-  
+
   #formFooter {
     text-decoration: none;
     background-color: #f6f6f6;
@@ -67,36 +67,42 @@
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
   }
-  
-  
-  
+
+
+
   /* TABS */
-  a:hover{
+  a:hover {
     text-decoration: none;
-  } 
-  a:active{
+  }
+
+  a:active {
     text-decoration: none;
-  } 
-  h2:hover{
+  }
+
+  h2:hover {
     text-decoration: none;
-  } 
-  p:hover{
+  }
+
+  p:hover {
     text-decoration: none;
-  } 
+  }
+
   h2.inactive {
     color: #cccccc;
   }
-  
+
   h2.active {
     color: #0d0d0d;
     border-bottom: 2px solid #5fbae9;
   }
-  
-  
-  
+
+
+
   /* FORM TYPOGRAPHY*/
-  
-  input[type=button], input[type=submit], input[type=reset]  {
+
+  input[type=button],
+  input[type=submit],
+  input[type=reset] {
     background-color: #56baed;
     border: none;
     color: white;
@@ -106,8 +112,8 @@
     display: inline-block;
     text-transform: uppercase;
     font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+    box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
     margin: 5px 20px 5px 20px;
@@ -117,19 +123,23 @@
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  
-  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+
+  input[type=button]:hover,
+  input[type=submit]:hover,
+  input[type=reset]:hover {
     background-color: #39ace7;
   }
-  
-  input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+
+  input[type=button]:active,
+  input[type=submit]:active,
+  input[type=reset]:active {
     -moz-transform: scale(0.95);
     -webkit-transform: scale(0.95);
     -o-transform: scale(0.95);
     -ms-transform: scale(0.95);
     transform: scale(0.95);
   }
-  
+
   input[type=email] {
     background-color: #f6f6f6;
     border: none;
@@ -150,6 +160,7 @@
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
   }
+
   input[type=password] {
     background-color: #f6f6f6;
     border: none;
@@ -170,10 +181,12 @@
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
   }
+
   input[type=email]:focus {
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
+
   input[type=password]:focus {
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
@@ -182,13 +195,14 @@
   input[type=email]:placeholder {
     color: #cccccc;
   }
+
   input[type=password]:placeholder {
     color: #cccccc;
   }
-  
-  
+
+
   /* ANIMATIONS */
-  
+
   /* Simple CSS3 Fade-in-down Animation */
   .fadeInDown {
     -webkit-animation-name: fadeInDown;
@@ -198,71 +212,99 @@
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
   }
-  
+
   @-webkit-keyframes fadeInDown {
     0% {
       opacity: 0;
       -webkit-transform: translate3d(0, -100%, 0);
       transform: translate3d(0, -100%, 0);
     }
+
     100% {
       opacity: 1;
       -webkit-transform: none;
       transform: none;
     }
   }
-  
+
   @keyframes fadeInDown {
     0% {
       opacity: 0;
       -webkit-transform: translate3d(0, -100%, 0);
       transform: translate3d(0, -100%, 0);
     }
+
     100% {
       opacity: 1;
       -webkit-transform: none;
       transform: none;
     }
   }
-  
+
   /* Simple CSS3 Fade-in Animation */
-  @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-  @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-  
-  .fadeIn {
-    opacity:0;
-    -webkit-animation:fadeIn ease-in 1;
-    -moz-animation:fadeIn ease-in 1;
-    animation:fadeIn ease-in 1;
-  
-    -webkit-animation-fill-mode:forwards;
-    -moz-animation-fill-mode:forwards;
-    animation-fill-mode:forwards;
-  
-    -webkit-animation-duration:1s;
-    -moz-animation-duration:1s;
-    animation-duration:1s;
+  @-webkit-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
-  
+
+  @-moz-keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .fadeIn {
+    opacity: 0;
+    -webkit-animation: fadeIn ease-in 1;
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    animation-duration: 1s;
+  }
+
   .fadeIn.first {
     -webkit-animation-delay: 0.4s;
     -moz-animation-delay: 0.4s;
     animation-delay: 0.4s;
   }
-  
+
   .fadeIn.second {
     -webkit-animation-delay: 0.6s;
     -moz-animation-delay: 0.6s;
     animation-delay: 0.6s;
   }
-  
+
   .fadeIn.third {
     -webkit-animation-delay: 0.8s;
     -moz-animation-delay: 0.8s;
     animation-delay: 0.8s;
   }
-  
+
   .fadeIn.fourth {
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
@@ -287,102 +329,102 @@
     content: "";
     transition: width 0.2s;
   }
-  
+
   .underlineHover:hover {
     text-decoration: none;
     color: #0d0d0d;
   }
-  
-  .underlineHover:hover:after{
+
+  .underlineHover:hover:after {
     text-decoration: none;
     width: 100%;
   }
-  
-  
-  
+
+
+
   /* OTHERS */
-  
+
   *:focus {
-      outline: none;
-  } 
-  
+    outline: none;
+  }
+
   #icon {
-    width:60%;
+    width: 60%;
   }
 </style>
 
 @section('content')
 <div class="wrapper fadeInDown">
-    <!-- <div class="row"> -->
-        <!-- <div class="wrapper fadeInDown"> -->
-            <div id="formContent">
-            <div class="fadeIn first">
-              <img src="assets/image/tukang logo item.png" id="icon" alt="Logo" />
-            </div>
-            <!-- <div class="panel panel-default"> -->
-                <!-- <div class="panel-heading">Login</div> -->
+  <!-- <div class="row"> -->
+  <!-- <div class="wrapper fadeInDown"> -->
+  <div id="formContent">
+    <div class="fadeIn first">
+      <img src="assets/image/tukang logo item.png" id="icon" alt="Logo" />
+    </div>
+    <!-- <div class="panel panel-default"> -->
+    <!-- <div class="panel-heading">Login</div> -->
 
-                <!-- <div class="panel-body"> -->
-                    <form method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+    <!-- <div class="panel-body"> -->
+    <form method="POST" action="{{ route('login') }}">
+      {{ csrf_field() }}
 
-                        <div class="fadeIn second {{ $errors->has('email') ? ' has-error' : '' }}">
-                            <!-- <label for="email" class="col-md-4 control-label">E-Mail Address</label> -->
+      <div class="fadeIn second {{ $errors->has('email') ? ' has-error' : '' }}">
+        <!-- <label for="email" class="col-md-4 control-label">E-Mail Address</label> -->
 
-                            <!-- <div class="col-md-12"> -->
-                                <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="e-mail" required autofocus>
+        <!-- <div class="col-md-12"> -->
+        <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="e-mail" required autofocus>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            <!-- </div> -->
-                        </div>
+        @if ($errors->has('email'))
+        <span class="help-block">
+          <strong>{{ $errors->first('email') }}</strong>
+        </span>
+        @endif
+        <!-- </div> -->
+      </div>
 
-                        <div class="fadeIn third {{ $errors->has('password') ? ' has-error' : '' }}">
-                            <!-- <label for="password" class="col-md-4 control-label">Password</label> -->
+      <div class="fadeIn third {{ $errors->has('password') ? ' has-error' : '' }}">
+        <!-- <label for="password" class="col-md-4 control-label">Password</label> -->
 
-                            <!-- <div class="col-md-12"> -->
-                                <input id="password" type="password" name="password" placeholder="password" required>
+        <!-- <div class="col-md-12"> -->
+        <input id="password" type="password" name="password" placeholder="password" required>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            <!-- </div> -->
-                        </div>
+        @if ($errors->has('password'))
+        <span class="help-block">
+          <strong>{{ $errors->first('password') }}</strong>
+        </span>
+        @endif
+        <!-- </div> -->
+      </div>
 
-                        <div class="form-group">
-                            <!-- <div class="col-md-12"> -->
-                                <div class="checkbox fadeIn fifth">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            <!-- </div> -->
-                        </div>
+      <div class="form-group">
+        <!-- <div class="col-md-12"> -->
+        <div class="checkbox fadeIn fifth">
+          <label>
+            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+          </label>
+        </div>
+        <!-- </div> -->
+      </div>
 
-                        <!-- <div class="form-group"> -->
-                            <!-- <div class="col-md-12"> -->
-                                <!-- <button type="submit" class="btn btn-primary fadeIn fifth">
+      <!-- <div class="form-group"> -->
+      <!-- <div class="col-md-12"> -->
+      <!-- <button type="submit" class="btn btn-primary fadeIn fifth">
                                     LogIn
                                 </button> -->
-                            <!-- </div> -->
-                            <input type="submit" class="fadeIn third" value="Log In">
-                        <!-- </div> -->
-                    </form>
-                    <div id="formFooter">
-                        <!-- <p><a class="underlineHover" href="/">Home</a></p> -->
-                        <p><a class="underlineHover" href="/register">Registration</a></p>
-                        <p><a class="underlineHover" href="{{ route('password.request') }}">Forgot Password?</a></p>
-                    </div>
-                <!-- </div> -->
-            <!-- </div> -->
-            </div>
-        <!-- </div> -->
+      <!-- </div> -->
+      <input type="submit" class="fadeIn third" value="Log In" name="LogIn">
+      <!-- </div> -->
+    </form>
+    <div id="formFooter">
+      <!-- <p><a class="underlineHover" href="/">Home</a></p> -->
+      <p><a class="underlineHover" href="/register">Registration</a></p>
+      <p><a class="underlineHover" href="{{ route('password.request') }}">Forgot Password?</a></p>
+    </div>
     <!-- </div> -->
+    <!-- </div> -->
+  </div>
+  <!-- </div> -->
+  <!-- </div> -->
 </div>
 
 <!-- <div class="wrapper fadeInDown">
