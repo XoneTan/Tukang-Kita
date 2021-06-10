@@ -137,12 +137,15 @@
         <li><a href="{{ route('register') }}" style="color: black;font-weight:bold;">Register</a></li>
         @else
         <li class="dropdown">
-          <button href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" role="button" aria-expanded="false" style="color: black;font-weight:bold; margin-top:7px;display:inline; padding-left:20px; padding-right:20px;">
+          <button href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" role="button" aria-expanded="false" style="color: black;font-weight:bold; margin-top:7px;display:inline; padding-left:15px; padding-right:15px;">
             {{ Auth::user()->name }} <span class="caret"></span>
           </button>
           <a href="/favorite/{{Auth::user()->id}}" style="display: inline; font-size:20px;margin-top:1px;" data-toggle="tooltip" data-placement="top" title="Favourites">⭐️</a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="/profile">Profile</a></li>
+            @if (Auth::user()->role == "Tukang")
+            <li><a href="/dashboard">Manage Post</a></li>
+            @endif
             <li>
               <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

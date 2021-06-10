@@ -539,9 +539,9 @@
             </select>
             </div>
             <div class="marg">
-              <select class="fadeIn fourth" aria-label="Default select example" name="locationdetail">
-                <option selected disabled>Location Detail</option>
-                <option value="Tukang">Tukang/Owner</option>
+              <select class="fadeIn fourth" aria-label="Default select example" name="role">
+                <option selected disabled value="">Role</option>
+                <option value="Tukang">Tukang</option>
                 <option value="User">User</option>
               </select>
               </div>

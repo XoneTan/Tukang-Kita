@@ -14,6 +14,10 @@ class AddUserType extends Migration
     public function up()
     {
         //
+        Schema::table('users',function($table){
+            $table->string('role');
+        });
+        
     }
 
     /**
@@ -24,5 +28,8 @@ class AddUserType extends Migration
     public function down()
     {
         //
+        Schema::table('posts',function($table){
+            $table->dropColumn('role');
+        });
     }
 }

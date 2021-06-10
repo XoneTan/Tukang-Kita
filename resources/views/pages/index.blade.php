@@ -129,30 +129,17 @@
             </a>
         </div>
     </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-    </div>   
-    <br/>
-    <br/>
-    <h3>Your Recommendation</h3>
+    <br />
+    <br />
     @if(count($posts) > 0)
-        @foreach ($posts as $item)
-        <div class="col-md-4" style="padding-bottom: 20px;">
-            <div class="card">
-                <img class="img-category" src="/storage/cover_images/{{$item->cover_image}}" alt="Card Image" width="253" height="169" data-lazy="true" >
+    @foreach ($posts as $item)
+    <div class="col-md-4" style="padding-bottom: 20px;">
+        <div class="card">
+            <div class="class-header">{{$item->category}}</div>
+            <img class="img-category" src="/storage/cover_images/{{$item->cover_image}}" alt="Card Image" width="253" height="169" data-lazy="true">
 
-                <div class="card-body">
-                    <h2 class="h5">
+            <div class="card-body">
+                <h2 class="h5">
                     <a href="/category/{{$item->id}}">
                         {{$item->title}}
                     </a>

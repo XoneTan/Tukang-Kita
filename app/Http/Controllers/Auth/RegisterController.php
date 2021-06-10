@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'location' => 'required|string',
             'locationdetail' => 'required|string',
+            'role' => 'required|string'
         ]);
     }
 
@@ -70,6 +71,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'location' => $data['location'],
             'locationdetail' => $data['locationdetail'],
+            'role' => $data['role'],
         ]);
     }
 }
