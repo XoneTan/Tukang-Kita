@@ -106,11 +106,11 @@
     </div>   
     <br/>
     <br/>
+    <h3>Your Recommendation</h3>
     @if(count($posts) > 0)
         @foreach ($posts as $item)
         <div class="col-md-4" style="padding-bottom: 20px;">
             <div class="card">
-               <div class="class-header">{{$item->category}}</div>
                 <img class="img-category" src="/storage/cover_images/{{$item->cover_image}}" alt="Card Image" width="253" height="169" data-lazy="true" >
 
                 <div class="card-body">

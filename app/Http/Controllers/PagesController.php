@@ -15,8 +15,7 @@ class PagesController extends Controller
 {
     public function index(){
         $title = "Welcome to Tukang Kita";
-        $a = Post::all();
-
+        $a = Post::orderBy('title','desc')->take(6)->get();
         // return view('pages.index',compact('title'));
         return view('pages.index')->with('posts',$a);
     }

@@ -538,7 +538,17 @@
               <option value="Medan">Medan</option>
             </select>
             </div>
+            <div class="marg">
+              <select class="fadeIn fourth" aria-label="Default select example" name="locationdetail">
+                <option selected disabled>Location Detail</option>
+                <option value="Tukang">Tukang/Owner</option>
+                <option value="User">User</option>
+              </select>
+              </div>
             <input type="submit" class="fadeIn third" value="Register">
+
+
+
         </form>
         <!-- <div id="formFooter"> -->
             <!-- <p><a class="underlineHover" href="/">Home</a></p> -->
